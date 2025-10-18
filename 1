@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Odemknutí rádia Ford — Vysočina & Jihočeský</title>
+  <meta name="description" content="Poskytuji oficiální kódy pro odblokování rádia Ford. Rychle, oficiálně, s garancí." />
+  <style>
+    :root {
+      --accent:#0072ce;
+      --bg:#f8fbff;
+      --card:#ffffff;
+      --text:#0f172a;
+    }
+    * { box-sizing:border-box; }
+    body {
+      margin:0;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      color:var(--text);
+      background:var(--bg) url('https://images.unsplash.com/photo-1606220838311-23e2b1f4e6f0?auto=format&fit=crop&w=1600&q=80') no-repeat center top / cover;
+      min-height:100vh;
+    }
+    .overlay {
+      background:rgba(255,255,255,0.85);
+      min-height:100vh;
+      padding:20px;
+    }
+    .container {
+      max-width:960px;
+      margin:0 auto;
+      padding:20px;
+    }
+    h1 {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      margin:0;
+      font-size:30px;
+      color:var(--accent);
+    }
+    h1 img {
+      height:48px;
+    }
+    p.lead {
+      font-size:17px;
+      color:#374151;
+      margin:8px 0 20px;
+    }
+    .card {
+      background:var(--card);
+      border-radius:12px;
+      padding:20px;
+      box-shadow:0 4px 14px rgba(15,23,42,0.08);
+      backdrop-filter:blur(4px);
+    }
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 18px;
+      border-radius:10px;
+      border:0;
+      cursor:pointer;
+      font-weight:600;
+      transition:all .25s ease;
+      text-decoration:none;
+    }
+    .btn-primary {
+      background:var(--accent);
+      color:#fff;
+    }
+    .btn-primary:hover {
+      box-shadow:0 0 14px rgba(0,114,206,0.5);
+      transform:scale(1.03);
+    }
+    .btn-ghost {
+      background:transparent;
+      color:var(--accent);
+      border:2px solid rgba(0,114,206,0.2);
+    }
+    .btn-ghost:hover {
+      background:rgba(0,114,206,0.1);
+    }
+    .small { font-size:13px; color:#64748b; }
+    /* Modal */
+    .modal-backdrop {
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.55);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:1000;
+      padding:16px;
+    }
+    .modal {
+      background:var(--card);
+      padding:20px;
+      border-radius:12px;
+      max-width:560px;
+      width:100%;
+      box-shadow:0 12px 40px rgba(2,6,23,0.3);
+      animation:fadeIn .3s ease;
+    }
+    @keyframes fadeIn {
+      from{opacity:0;transform:translateY(-10px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+    textarea {
+      width:100%;
+      padding:10px;
+      border-radius:8px;
+      border:1px solid #cbd5e1;
+      font-size:15px;
+      margin-top:6px;
+      resize:vertical;
+    }
+    .phone-reveal {
+      font-weight:700;
+      font-size:18px;
+      color:var(--accent);
+      margin-top:6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <div class="container">
+      <h1>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Ford_logo_flat.svg" alt="Ford logo" />
+        Odemknutí rádia Ford
+      </h1>
+      <p class="lead">Poskytuji oficiální kódy pro odblokování rádia Ford — spolupracuji přímo s firmou Ford.</p>
+
+      <div class="card">
+        <p><strong>Oblast:</strong> Vysočina, Jihočeský — mohu přijet po dohodě.</p>
+        <p><strong>Email:</strong> <a href="mailto:noksed791@gmail.com">noksed791@gmail.com</a></p>
+        <p><strong>Telefon:</strong> zobrazí se po kliknutí na tlačítko níže.</p>
+        <button class="btn btn-primary" onclick="openModal()">Získat kód / Získat heslo</button>
+      </div>
+
+      <footer style="margin-top:20px;font-size:13px;color:#475569;text-align:center">
+        © <span id="year"></span> Odemknutí rádia Ford — <a href="mailto:noksed791@gmail.com">noksed791@gmail.com</a><br>
+        Licence: Creative Commons BY-NC 4.0
+      </footer>
+    </div>
+  </div>
+<!-- Modal -->
+  <div id="modalBackdrop" class="modal-backdrop">
+    <div class="modal">
+      <h3>Popište svůj problém</h3>
+      <form id="formEmail" onsubmit="sendEmail(event)">
+        <textarea name="message" rows="4" placeholder="Popište svůj problém..." required></textarea>
+        <button type="submit" class="btn btn-primary" style="margin-top:10px;">Poslat</button>
+      </form>
+      <div id="phoneSection" class="hidden" style="margin-top:16px;">
+        <p>Telefonní číslo:</p>
+        <p class="phone-reveal">+420 776 182 287</p>
+      </div>
+      <button class="btn btn-ghost" style="margin-top:10px;" onclick="revealPhone()">Ukázat telefon</button>
+      <button class="btn" style="margin-top:10px;background:#f3f4f6" onclick="closeModal()">Zavřít</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const backdrop = document.getElementById('modalBackdrop');
+    function openModal(){ backdrop.style.display='flex'; }
+    function closeModal(){ backdrop.style.display='none'; document.getElementById('phoneSection').classList.add('hidden'); }
+    function revealPhone(){ document.getElementById('phoneSection').classList.remove('hidden'); }
+    function sendEmail(e){
+      e.preventDefault();
+      const msg = e.target.message.value.trim();
+      const subject = encodeURIComponent('Žádost o kód Ford rádio');
+      const body = encodeURIComponent(msg);
+      window.location.href = 'mailto:noksed791@gmail.com?subject='+subject+'&body='+body;
+      alert('Otevřel se váš e-mailový klient. Pokud ne, napište ručně na noksed791@gmail.com');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
